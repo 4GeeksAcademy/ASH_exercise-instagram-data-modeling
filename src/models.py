@@ -1,6 +1,4 @@
-import os
-import sys
-from sqlalchemy import create_engine, Table, Column, ForeignKey, Integer, String, Enum
+from sqlalchemy import Column, ForeignKey, Integer, String, Enum
 from sqlalchemy.orm import relationship, declarative_base
 from eralchemy2 import render_er
 
@@ -42,10 +40,9 @@ class Media(Base):
 
 class Follower(Base):
     __tablename__ = 'follower'
-    # id = Column(Integer, primary_key=True)
-    user_from_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
+    id = Column(Integer, primary_key=True)
+    user_from_id = Column(Integer, ForeignKey('user.id'))
     user_to_id = Column(Integer, ForeignKey('user.id'))
-
 
 ## Draw from SQLAlchemy base
 try:
