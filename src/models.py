@@ -20,7 +20,7 @@ class User(Base):
 class Comment(Base):
     __tablename__ = 'comment'
     id = Column(Integer, primary_key=True)
-    comment_text = Column(String(250))
+    comment_text = Column(String(250), nullable=False)
     author_id = Column(Integer, ForeignKey('user.id'))
     post_id = Column(Integer, ForeignKey('post.id'))
 
@@ -34,8 +34,8 @@ class Post(Base):
 class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key=True)
-    type = Column(Enum(media_type))
-    url = Column(String(250))
+    type = Column(Enum(media_type), nullable=False)
+    url = Column(String(250), nullable=False)
     post_id = Column(Integer, ForeignKey('post.id'))
 
 class Follower(Base):
